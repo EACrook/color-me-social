@@ -1,5 +1,6 @@
 const router = require('express').Router();
-const { 
+const {
+    getThought, 
     addThought,
     removeThought,
     addReaction,
@@ -8,6 +9,7 @@ const {
 
 router
     .route('/:userId')
+    .get(getThought)
     .post(addThought);
 
 router

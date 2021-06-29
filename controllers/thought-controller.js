@@ -1,6 +1,18 @@
 const { Thought, User } = require('../models');
 
 const thoughtController = {
+    getThought({ params, body}, res) {
+        console.log('WE HIT GET THOUGHT!!!!')
+        Thought.find({})
+        .then(dbUserData => {
+            res.json(dbUserData)
+        })
+        .catch(err => {
+            console.log('err', err)
+        })
+        
+    },
+
     addThought({ params, body }, res) {
         console.log('body', body);
         Thought.create(body)
@@ -23,9 +35,10 @@ const thoughtController = {
     },
 
     addReaction({ params, body }, res) {
+        console.log('Body!!! about to update thought!!', body)
         Thought.findOneAndUpdate(
             { _id: params.thoughtId },
-            { $push: { replies: body } },
+            { $push: { reaction: body } },
             { new: true }
         )
         .then(dbUserData => {
@@ -33,6 +46,7 @@ const thoughtController = {
                 res.status(404).json({ message: 'No user found with this id!' });
                 return;
             }
+            console.log('Just updated in .then!', dbUserData)
             res.json(dbUserData);
         })
         .catch(err => res.json(err));
