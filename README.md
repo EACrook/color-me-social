@@ -12,7 +12,7 @@ This application allows users to create a profile, make/delete posts, add/delete
 *_Mongoose_
 
 ## Link to video walk through
-https://drive.google.com/file/d/1JsVijWfGY7IrSdKQjfjBrSpeexejiuau/view
+https://youtu.be/pCUYzUkE6Iw
 
 ## Future Development
 I would like to build a working Frontend for this. 
